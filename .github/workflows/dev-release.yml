@@ -3,15 +3,13 @@ name: "pre-release"
 # this is intended to trigger on notaz/pcsx_rearmed libretro push
 # and do nothing on libretro/pcsx_rearmed master push
 on:
-  push:
-    branches:
-      - "libretro"
+  workflow_dispatch:
 
 jobs:
   pre-release:
     name: "Pre Release"
     runs-on: "ubuntu-20.04"
-
+    container: devkitpro/devkitarm:latest
     steps:
       - name: Install dependencies
         run: |
@@ -26,6 +24,7 @@ jobs:
         env:
           MAKEFLAGS: -j$(nproc)
         run: |
+          .github/build-libretro-zip.sh arm32 ctr
           .github/build-libretro-zip.sh arm64 CortexA73_G12B
           .github/build-libretro-zip.sh arm32 rpi1
           .github/build-libretro-zip.sh arm32 rpi2
@@ -43,6 +42,7 @@ jobs:
           prerelease: true
           title: "Development Build"
           files: |
+            pcsx_rearmed_libretro_arm32_ctr.zip
             pcsx_rearmed_libretro_arm64_CortexA73_G12B.zip
             pcsx_rearmed_libretro_arm32_rpi1.zip
             pcsx_rearmed_libretro_arm32_rpi2.zip
