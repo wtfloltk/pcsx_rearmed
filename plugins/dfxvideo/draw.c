@@ -1020,14 +1020,14 @@ void CreateDisplay(void)
    return;
   }
 
- myscreen=DefaultScreen(display);
+ myscreen=2;
 
  // desktop fullscreen switch
  if (!iWindowMode) fx = 1;
 
  screen=DefaultScreenOfDisplay(display);
 
- root_window_id=RootWindow(display,DefaultScreen(display));
+ root_window_id=RootWindow(display,2);
 
   //Look for an Xvideo RGB port
   ret = XvQueryAdaptors(display, root_window_id, &p_num_adaptors, &ai);
