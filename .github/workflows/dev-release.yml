@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Install dependencies
         run: |
-          dkp-pacman -Syu
+          dkp-pacman -Syu --noconfirm
           dkp-pacman -Sy 3ds-dev 3ds-portlibs --noconfirm
           sudo apt-get update -qq
           sudo apt-get install -y make git bc sed zip
