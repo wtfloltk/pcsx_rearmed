@@ -7,9 +7,9 @@ if [[ $# -lt 2 ]]; then
 fi
 
 if [[ $1 = "arm32" ]]; then
-  export CC=arm-linux-gnueabihf-gcc
-  export CXX=arm-linux-gnueabihf-g++
-  export LD=arm-linux-gnueabihf-ld
+  export CC=arm-none-eabi-gcc
+  export CXX=arm-none-eabi-g++
+  export LD=arm-none-eabi-ld
   aname=arm32
 elif [[ $1 = "arm64" ]]; then
   export CC=aarch64-linux-gnu-gcc
